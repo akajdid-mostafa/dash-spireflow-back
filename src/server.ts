@@ -5,6 +5,16 @@ import schema from "./graphql/schema";
 
 const app = express();
 app.use(cors());
+
+// Add a root route
+app.get("/", (req, res) => {
+  res.json({ 
+    message: "Spireflow GraphQL API is running!",
+    graphql: "/graphql",
+    graphiql: "/graphql (in browser)"
+  });
+});
+
 app.use(
   "/graphql",
   graphqlHTTP({
